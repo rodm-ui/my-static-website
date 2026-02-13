@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML 5 - Automatic Image</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            background-image: url('https://th.bing.com/th/id/OIP.Hw7HouqjAdsi5RVqOguTzQHaJM?w=160&h=150&c=6&o=7&pid=1.7');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #d10b85;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(255,255,255,0.8);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 900px;
+            padding: 30px;
+            margin: 20px;
+            background-color: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+        }
+
+        h1, h2, h3 { color: #001a4d; }
+        p { font-size: 1.1em; }
+
+        .tabs { margin: 20px 0; }
+        .tabs button {
+            background-color: #cce0ff;
+            border: 1px solid #0040ff;
+            color: #003366;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        .tabs button.active {
+            background-color: #0040ff;
+            color: white;
+        }
+
+        .section { display: none; margin-top: 20px; }
+        .section.active { display: block; }
+
+        ul, ol { text-align: left; display: inline-block; margin: 10px auto; }
+        ul li, ol li { margin: 5px 0; }
+
+        a { color: #0040ff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        img { max-width: 300px; height: auto; border: 3px solid #0040ff; border-radius: 12px; margin-top: 10px; }
+
+        table { width: 100%; margin: 20px auto; border-collapse: collapse; text-align: center; }
+        th, td { border: 1px solid #0040ff; padding: 10px; }
+        th { background-color: #cce0ff; }
+        tr:nth-child(even) { background-color: #fff0fb; }
+    </style>
+    <script>
+        function openTab(tabName) {
+            let sections = document.querySelectorAll('.section');
+            sections.forEach(sec => sec.classList.remove('active'));
+
+            let buttons = document.querySelectorAll('.tabs button');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+            document.querySelector(`button[data-tab="${tabName}"]`)?.classList.add('active');
+        }
+
+        window.onload = function() {
+            alert("Hello World");
+            // Automatically show Image tab on load
+            openTab('image');
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>My HTML WEB PAGE</h1>
+        <p>Welcome to my HTML laboratory activity. Explore the sections using tabs.</p>
+
+        <div class="tabs">
+            <button data-tab="home" onclick="openTab('home')">Home</button>
+            <button data-tab="lists" onclick="openTab('lists')">Lists</button>
+            <button data-tab="table" onclick="openTab('table')">Table</button>
+            <button data-tab="image" onclick="openTab('image')">Image</button>
+        </div>
+
+        <div class="section" id="home">
+            <h2>Home</h2>
+            <p>This page demonstrates lists, links, images, tables, and JavaScript alert.</p>
+        </div>
+
+        <div class="section" id="lists">
+            <h2>Task 2: Lists, Links</h2>
+            <h3>Unordered List</h3>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+            </ul>
+            <h3>Ordered List</h3>
+            <ol>
+                <li>Plan the webpage</li>
+                <li>Write HTML code</li>
+                <li>Test in a browser</li>
+            </ol>
+            <p>Visit <a href="https://www.w3schools.com" target="_blank">W3Schools</a> for tutorials.</p>
+        </div>
+
+        <div class="section" id="table">
+            <h2>Task 3: Student Information Table</h2>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Course</th>
+                    <th>Year Level</th>
+                </tr>
+                <tr>
+                    <td>Maria Theresa C. Penaso</td>
+                    <td>BS Information Technology</td>
+                    <td>3rd Year</td>
+                </tr>
+                <tr>
+                    <td>Marie Antonette D. Rodrigo</td>
+                    <td>BS Information Technology</td>
+                    <td>3rd Year</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section" id="image">
+            <h2>NADINE LUSTRE</h2>
+            <!-- Automatically displayed image -->
+            <img src="data:image/webp;base64,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" alt="Automatic Image">
+        </div>
+    </div>
+</body>
+</html>
